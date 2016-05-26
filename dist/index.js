@@ -1772,7 +1772,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	};
 
-	function reducelessConnect(path, dispatchProps, setState, replaceState) {
+	function reducelessConnect(path) {
+	  var dispatchProps = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	  var setState = arguments[2];
+	  var replaceState = arguments[3];
+
 	  return function (WrappedComponent) {
 	    var Connect = function (_React$Component) {
 	      _inherits(Connect, _React$Component);

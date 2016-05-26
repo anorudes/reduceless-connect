@@ -20,7 +20,7 @@ const getKeyAndValueFromObject = obj => {
   };
 };
 
-export default function reducelessConnect(path, dispatchProps, setState, replaceState) {
+export default function reducelessConnect(path, dispatchProps = {}, setState, replaceState) {
   return function (WrappedComponent) {
     class Connect extends React.Component {
       render() {

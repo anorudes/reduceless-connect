@@ -80,3 +80,11 @@ import { connect } from 'reduceless-connect';
   }],
 )
 ```
+
+## Other example:
+
+```js
+import { connect } from 'reduceless-connect';
+
+@connect(
+  ['app.data.info', 'posts.example.test'], // working as 'state => ({ ...state.app.data.info, ...state.posts.example.test })' in @connect react-redux
