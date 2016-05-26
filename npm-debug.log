@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/anoru/.nvm/versions/node/v5.11.1/bin/node',
+1 verbose cli   '/home/anoru/.nvm/versions/node/v5.11.1/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'build' ]
+2 info using npm@3.8.6
+3 info using node@v5.11.1
+4 verbose run-script [ 'prebuild', 'build', 'postbuild' ]
+5 info lifecycle reduceless-connect@0.0.5~prebuild: reduceless-connect@0.0.5
+6 silly lifecycle reduceless-connect@0.0.5~prebuild: no script for prebuild, continuing
+7 info lifecycle reduceless-connect@0.0.5~build: reduceless-connect@0.0.5
+8 verbose lifecycle reduceless-connect@0.0.5~build: unsafe-perm in lifecycle true
+9 verbose lifecycle reduceless-connect@0.0.5~build: PATH: /home/anoru/.nvm/versions/node/v5.11.1/lib/node_modules/npm/bin/node-gyp-bin:/home/anoru/git/reduceless-connect/node_modules/.bin:/home/anoru/.nvm/versions/node/v5.11.1/bin:/home/anoru/.nvm/versions/node/v5.11.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+10 verbose lifecycle reduceless-connect@0.0.5~build: CWD: /home/anoru/git/reduceless-connect
+11 silly lifecycle reduceless-connect@0.0.5~build: Args: [ '-c', 'webpack src/index.js dist/index.js' ]
+12 silly lifecycle reduceless-connect@0.0.5~build: Returned: code: 1  signal: null
+13 info lifecycle reduceless-connect@0.0.5~build: Failed to exec build script
+14 verbose stack Error: reduceless-connect@0.0.5 build: `webpack src/index.js dist/index.js`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/home/anoru/.nvm/versions/node/v5.11.1/lib/node_modules/npm/lib/utils/lifecycle.js:239:16)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at EventEmitter.emit (events.js:185:7)
+14 verbose stack     at ChildProcess.<anonymous> (/home/anoru/.nvm/versions/node/v5.11.1/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at ChildProcess.emit (events.js:185:7)
+14 verbose stack     at maybeClose (internal/child_process.js:850:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+15 verbose pkgid reduceless-connect@0.0.5
+16 verbose cwd /home/anoru/git/reduceless-connect
+17 error Linux 3.19.0-25-generic
+18 error argv "/home/anoru/.nvm/versions/node/v5.11.1/bin/node" "/home/anoru/.nvm/versions/node/v5.11.1/bin/npm" "run" "build"
+19 error node v5.11.1
+20 error npm  v3.8.6
+21 error code ELIFECYCLE
+22 error reduceless-connect@0.0.5 build: `webpack src/index.js dist/index.js`
+22 error Exit status 1
+23 error Failed at the reduceless-connect@0.0.5 build script 'webpack src/index.js dist/index.js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the reduceless-connect package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     webpack src/index.js dist/index.js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs reduceless-connect
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls reduceless-connect
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
