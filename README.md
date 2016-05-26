@@ -38,6 +38,7 @@ export default function app(state = {
 
 ```js
 import { connect } from 'reduceless-connect';
+import * as actionCreators from 'redux/modules'; // [ducks-modular-redux](https://github.com/erikras/ducks-modular-redux)
 
 @connect(
   'app', // working as 'state => state.app' in @connect react-redux
@@ -68,8 +69,6 @@ export default class TestComponent extends Component {
 ## Multiple selector and setReduxState example:
 
 ```js
-import { connect } from 'reduceless-connect';
-
 @connect(
   ['app', 'user', 'categories'], // working as 'state => ({ ...state.app, ...state.user, ...state.categories })' in @connect react-redux
   { ...actionCreators.app, ...actionCreators.posts }, // // working as 'dispatch => bindActionCreators({ ...actionCreators.app, ...actionCreators.posts }, dispatch)' in @connect react-redux in @connect react-redux
@@ -90,11 +89,9 @@ import { connect } from 'reduceless-connect';
 ## Deep selector example:
 
 ```js
-import { connect } from 'reduceless-connect';
-
 @connect(
   ['app.data.info', 'posts.example.test'], // working as 'state => ({ ...state.app.data.info, ...state.posts.example.test })' in @connect react-redux
-
+```
 
 ## Props in setReduxState method
 
@@ -104,3 +101,4 @@ import { connect } from 'reduceless-connect';
   { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
   { setAppSettings: props => `app.data.${props.index}` },
 )
+```
