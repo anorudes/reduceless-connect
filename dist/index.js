@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("react-redux"));
+		module.exports = factory(require("react"), require("react-redux"), require("redux"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "react-redux"], factory);
+		define(["react", "react-redux", "redux"], factory);
 	else if(typeof exports === 'object')
-		exports["Reduceless"] = factory(require("react"), require("react-redux"));
+		exports["Reduceless"] = factory(require("react"), require("react-redux"), require("redux"));
 	else
-		root["Reduceless"] = factory(root["React"], root["React-redux"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_156__, __WEBPACK_EXTERNAL_MODULE_157__) {
+		root["Reduceless"] = factory(root["React"], root["React-redux"], root["Redux"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_156__, __WEBPACK_EXTERNAL_MODULE_157__, __WEBPACK_EXTERNAL_MODULE_158__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -1733,6 +1733,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _reactRedux = __webpack_require__(157);
 
+	var _redux = __webpack_require__(158);
+
 	var _get = __webpack_require__(25);
 
 	var _get2 = _interopRequireDefault(_get);
@@ -1794,9 +1796,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return (0, _reactRedux.connect)(function (state) {
 	      return state;
 	    }, function (dispatch) {
-	      return { dispatch: dispatch };
-	    }, function (state, _ref, props) {
-	      var dispatch = _ref.dispatch;
+	      return (0, _redux.bindActionCreators)(_extends({
+	        dispatch: dispatch
+	      }, dispatchProps), dispatch);
+	    }, function (state, actions, props) {
+	      var dispatch = actions.dispatch;
 
 	      var slicedState = {};
 	      var setStateProps = {};
@@ -1856,7 +1860,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 
-	      return _extends({}, props, slicedState, dispatchProps, setStateProps, replaceStateProps);
+	      return _extends({}, props, slicedState, actions, setStateProps, replaceStateProps);
 	    })(Connect);
 	  };
 	}
@@ -5395,6 +5399,12 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = __WEBPACK_EXTERNAL_MODULE_157__;
+
+/***/ },
+/* 158 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_158__;
 
 /***/ }
 /******/ ])
