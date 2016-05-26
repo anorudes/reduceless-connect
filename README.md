@@ -3,7 +3,7 @@ based on [reduceless](https://github.com/nosovsh/reduceless)
 
 ## Install
 
-## Combine reducers:
+Combine reducers:
 
 ```js
 import { wrapReducerWithSetGlobalState } from 'reduceless-connect';
@@ -23,7 +23,7 @@ const rootReducer = wrapReducerWithSetGlobalState(
 );
 ```
 
-## Reducer:
+Reducer:
 
 ```js
 export default function app(state = {
@@ -65,7 +65,7 @@ export default class TestComponent extends Component {
 }
 ```
 
-## Multiple example:
+## Multiple selector and setReduxState example:
 
 ```js
 import { connect } from 'reduceless-connect';
@@ -81,7 +81,7 @@ import { connect } from 'reduceless-connect';
 )
 ```
 
-## SetState method by path
+## setReduxState method by path
 
 ```js
 <button onClick={() => setAppSettings('example.a' { qwe: true })}> // = app.settings.exampla.a.qwe = true
@@ -96,7 +96,7 @@ import { connect } from 'reduceless-connect';
   ['app.data.info', 'posts.example.test'], // working as 'state => ({ ...state.app.data.info, ...state.posts.example.test })' in @connect react-redux
 
 
-## Props in setState method
+## Props in setReduxState method
 
 ```js
 @connect(
