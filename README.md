@@ -38,7 +38,7 @@ export default function app(state = {
 
 ```js
 import { connect } from 'reduceless-connect';
-import * as actionCreators from 'redux/modules'; // [ducks-modular-redux](https://github.com/erikras/ducks-modular-redux)
+import * as actionCreators from 'redux/modules'; // https://github.com/erikras/ducks-modular-redux
 
 @connect(
   'app', // working as 'state => state.app' in @connect react-redux
