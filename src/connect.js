@@ -60,7 +60,11 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
             setState = getKeyAndValueFromObject(setState);
 
             setStateProps = {
-              [setState.key]: newState => dispatch(setStateByPath(setState.value, newState)),
+              [setState.key]: (a, b) => {
+                b
+                  ? dispatch(setStateByPath(setState.value + a, b))
+                  : dispatch(setStateByPath(setState.value, a));
+              },
             };
           }
 
@@ -71,7 +75,11 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
 
               setStateProps = {
                 ...setStateProps,
-                [setStateData.key]: newState => dispatch(setStateByPath(setStateData.value, newState)),
+                [setStateData.key]: (a, b) => {
+                  b
+                    ? dispatch(setStateByPath(setStateData.value + a, b))
+                    : dispatch(setStateByPath(setStateData.value, a));
+                },
               };
             });
           }
@@ -83,7 +91,11 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
             replaceState = getKeyAndValueFromObject(replaceState);
 
             replaceStateProps = {
-              [replaceState.key]: newState => dispatch(replaceStateByPath(replaceState.value, newState)),
+              [replaceState.key]: (a, b) => {
+                b
+                  ? dispatch(replaceStateByPath(setState.value + a, b))
+                  : dispatch(replaceStateByPath(setState.value, a));
+              },
             };
           }
 
@@ -94,7 +106,11 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
 
               replaceStateProps = {
                 ...replaceStateProps,
-                [replaceStateData.key]: newState => dispatch(replaceStateByPath(replaceStateData.value, newState)),
+                [replaceStateData.key]: (a, b) => {
+                  b
+                    ? dispatch(replaceStateByPath(replaceStateData.value + a, b))
+                    : dispatch(replaceStateByPath(replaceStateData.value, a));
+                },
               };
             });
           }

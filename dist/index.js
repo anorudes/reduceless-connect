@@ -1825,8 +1825,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if ((typeof setState === 'undefined' ? 'undefined' : _typeof(setState)) === 'object' && Object.prototype.toString.call(setState) !== '[object Array]') {
 	          setState = getKeyAndValueFromObject(setState);
 
-	          setStateProps = _defineProperty({}, setState.key, function (newState) {
-	            return dispatch((0, _setStateByPath2.default)(setState.value, newState));
+	          setStateProps = _defineProperty({}, setState.key, function (a, b) {
+	            b ? dispatch((0, _setStateByPath2.default)(setState.value + a, b)) : dispatch((0, _setStateByPath2.default)(setState.value, a));
 	          });
 	        }
 
@@ -1835,8 +1835,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          setState.map(function (item) {
 	            var setStateData = getKeyAndValueFromObject(item);
 
-	            setStateProps = _extends({}, setStateProps, _defineProperty({}, setStateData.key, function (newState) {
-	              return dispatch((0, _setStateByPath2.default)(setStateData.value, newState));
+	            setStateProps = _extends({}, setStateProps, _defineProperty({}, setStateData.key, function (a, b) {
+	              b ? dispatch((0, _setStateByPath2.default)(setStateData.value + a, b)) : dispatch((0, _setStateByPath2.default)(setStateData.value, a));
 	            }));
 	          });
 	        }
@@ -1847,8 +1847,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if ((typeof replaceState === 'undefined' ? 'undefined' : _typeof(replaceState)) === 'object' && Object.prototype.toString.call(replaceState) !== '[object Array]') {
 	          replaceState = getKeyAndValueFromObject(replaceState);
 
-	          replaceStateProps = _defineProperty({}, replaceState.key, function (newState) {
-	            return dispatch((0, _replaceStateByPath2.default)(replaceState.value, newState));
+	          replaceStateProps = _defineProperty({}, replaceState.key, function (a, b) {
+	            b ? dispatch((0, _replaceStateByPath2.default)(setState.value + a, b)) : dispatch((0, _replaceStateByPath2.default)(setState.value, a));
 	          });
 	        }
 
@@ -1857,8 +1857,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          replaceState.map(function (item) {
 	            var replaceStateData = getKeyAndValueFromObject(item);
 
-	            replaceStateProps = _extends({}, replaceStateProps, _defineProperty({}, replaceStateData.key, function (newState) {
-	              return dispatch((0, _replaceStateByPath2.default)(replaceStateData.value, newState));
+	            replaceStateProps = _extends({}, replaceStateProps, _defineProperty({}, replaceStateData.key, function (a, b) {
+	              b ? dispatch((0, _replaceStateByPath2.default)(replaceStateData.value + a, b)) : dispatch((0, _replaceStateByPath2.default)(replaceStateData.value, a));
 	            }));
 	          });
 	        }
