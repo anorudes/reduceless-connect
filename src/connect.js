@@ -20,16 +20,23 @@ const getKeyAndValueFromObject = obj => {
   };
 };
 
-const setReduxState = (setState, dispatch) => {
+const setReduxState = (setState, dispatch, props) => {
+  if (typeof setState.value === 'function') {
+    setState.value = setState.value(props);
+    console.log(props);
+  }
   return (a, b) => b
     ? dispatch(setStateByPath(`${setState.value}.${a}`, b))
     : dispatch(setStateByPath(setState.value, a));
 };
 
-const replaceReduxState = (setState, dispatch) => {
+const replaceReduxState = (setState, dispatch, props) => {
+  if (typeof setState.value === 'function') {
+    setState.value = setState.value(props);
+  }
   return (a, b) => b
-      ? dispatch(replaceStateByPath(`${setState.value}.${a}`, b))
-      : dispatch(replaceStateByPath(setState.value, a));
+    ? dispatch(replaceStateByPath(`${setState.value}.${a}`, b))
+    : dispatch(replaceStateByPath(setState.value, a));
 };
 
 export default function reducelessConnect(path, dispatchProps = {}, setState, replaceState) {
@@ -66,13 +73,18 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
           });
         }
 
+        props = {
+          ...slicedState,
+          ...props,
+        }
+
         if (setState) {
           // setState is object
           if (typeof setState === 'object' && Object.prototype.toString.call(setState) !== '[object Array]') {
             setState = getKeyAndValueFromObject(setState);
 
             setStateProps = {
-              [setState.key]: setReduxState(setState, dispatch),
+              [setState.key]: setReduxState(setState, dispatch, props),
             };
           }
 
@@ -83,7 +95,7 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
 
               setStateProps = {
                 ...setStateProps,
-                [setStateData.key]: setReduxState(setStateData, dispatch),
+                [setStateData.key]: setReduxState(setStateData, dispatch, props),
               };
             });
           }
@@ -114,7 +126,6 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
 
         return {
           ...props,
-          ...slicedState,
           ...actions,
           ...setStateProps,
           ...replaceStateProps,

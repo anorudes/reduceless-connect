@@ -1772,13 +1772,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	};
 
-	var setReduxState = function setReduxState(setState, dispatch) {
+	var setReduxState = function setReduxState(setState, dispatch, props) {
+	  if (typeof setState.value === 'function') {
+	    setState.value = setState.value(props);
+	    console.log(props);
+	  }
 	  return function (a, b) {
 	    return b ? dispatch((0, _setStateByPath2.default)(setState.value + '.' + a, b)) : dispatch((0, _setStateByPath2.default)(setState.value, a));
 	  };
 	};
 
-	var replaceReduxState = function replaceReduxState(setState, dispatch) {
+	var replaceReduxState = function replaceReduxState(setState, dispatch, props) {
+	  if (typeof setState.value === 'function') {
+	    setState.value = setState.value(props);
+	  }
 	  return function (a, b) {
 	    return b ? dispatch((0, _replaceStateByPath2.default)(setState.value + '.' + a, b)) : dispatch((0, _replaceStateByPath2.default)(setState.value, a));
 	  };
@@ -1832,12 +1839,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	      }
 
+	      props = _extends({}, slicedState, props);
+
 	      if (setState) {
 	        // setState is object
 	        if ((typeof setState === 'undefined' ? 'undefined' : _typeof(setState)) === 'object' && Object.prototype.toString.call(setState) !== '[object Array]') {
 	          setState = getKeyAndValueFromObject(setState);
 
-	          setStateProps = _defineProperty({}, setState.key, setReduxState(setState, dispatch));
+	          setStateProps = _defineProperty({}, setState.key, setReduxState(setState, dispatch, props));
 	        }
 
 	        // setState is array
@@ -1845,7 +1854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          setState.map(function (item) {
 	            var setStateData = getKeyAndValueFromObject(item);
 
-	            setStateProps = _extends({}, setStateProps, _defineProperty({}, setStateData.key, setReduxState(setStateData, dispatch)));
+	            setStateProps = _extends({}, setStateProps, _defineProperty({}, setStateData.key, setReduxState(setStateData, dispatch, props)));
 	          });
 	        }
 	      }
@@ -1868,7 +1877,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 
-	      return _extends({}, props, slicedState, actions, setStateProps, replaceStateProps);
+	      return _extends({}, props, actions, setStateProps, replaceStateProps);
 	    })(Connect);
 	  };
 	}

@@ -95,3 +95,12 @@ import { connect } from 'reduceless-connect';
 @connect(
   ['app.data.info', 'posts.example.test'], // working as 'state => ({ ...state.app.data.info, ...state.posts.example.test })' in @connect react-redux
 
+
+## Props in setState method
+
+```js
+@connect(
+  'app', // working as 'state => state.app' in @connect react-redux
+  { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
+  { setAppSettings: props => `app.data.${props.index}` },
+)
