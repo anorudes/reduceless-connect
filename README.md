@@ -61,6 +61,7 @@ export default class TestComponent extends Component {
     );
   }
 }
+```
 
 ## Other example:
 
