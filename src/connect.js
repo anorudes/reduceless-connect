@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import get from 'lodash/get';
 import setStateByPath from './setStateByPath';
 import replaceStateByPath from './replaceStateByPath';
@@ -30,8 +31,12 @@ export default function reducelessConnect(path, dispatchProps, setState, replace
     }
     return connect(
       state => state,
-      dispatch => ({ dispatch }),
-      (state, { dispatch }, props) => {
+      dispatch => bindActionCreators({
+        dispatch,
+        ...dispatchProps,
+      }, dispatch),
+      (state, actions, props) => {
+        const { dispatch } = actions;
         let slicedState = {};
         let setStateProps = {};
         let replaceStateProps = {};
@@ -98,7 +103,7 @@ export default function reducelessConnect(path, dispatchProps, setState, replace
         return {
           ...props,
           ...slicedState,
-          ...dispatchProps,
+          ...actions,
           ...setStateProps,
           ...replaceStateProps,
         };
