@@ -1772,6 +1772,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	};
 
+	var setReduxState = function setReduxState(setState, dispatch) {
+	  return function (a, b) {
+	    return b ? dispatch((0, _setStateByPath2.default)(setState.value + '.' + a, b)) : dispatch((0, _setStateByPath2.default)(setState.value, a));
+	  };
+	};
+
+	var replaceReduxState = function replaceReduxState(setState, dispatch) {
+	  return function (a, b) {
+	    return b ? dispatch((0, _replaceStateByPath2.default)(setState.value + '.' + a, b)) : dispatch((0, _replaceStateByPath2.default)(setState.value, a));
+	  };
+	};
+
 	function reducelessConnect(path) {
 	  var dispatchProps = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 	  var setState = arguments[2];
@@ -1825,9 +1837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if ((typeof setState === 'undefined' ? 'undefined' : _typeof(setState)) === 'object' && Object.prototype.toString.call(setState) !== '[object Array]') {
 	          setState = getKeyAndValueFromObject(setState);
 
-	          setStateProps = _defineProperty({}, setState.key, function (a, b) {
-	            b ? dispatch((0, _setStateByPath2.default)(setState.value + a, b)) : dispatch((0, _setStateByPath2.default)(setState.value, a));
-	          });
+	          setStateProps = _defineProperty({}, setState.key, setReduxState(setState, dispatch));
 	        }
 
 	        // setState is array
@@ -1835,9 +1845,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          setState.map(function (item) {
 	            var setStateData = getKeyAndValueFromObject(item);
 
-	            setStateProps = _extends({}, setStateProps, _defineProperty({}, setStateData.key, function (a, b) {
-	              b ? dispatch((0, _setStateByPath2.default)(setStateData.value + a, b)) : dispatch((0, _setStateByPath2.default)(setStateData.value, a));
-	            }));
+	            setStateProps = _extends({}, setStateProps, _defineProperty({}, setStateData.key, setReduxState(setStateData, dispatch)));
 	          });
 	        }
 	      }
@@ -1847,9 +1855,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if ((typeof replaceState === 'undefined' ? 'undefined' : _typeof(replaceState)) === 'object' && Object.prototype.toString.call(replaceState) !== '[object Array]') {
 	          replaceState = getKeyAndValueFromObject(replaceState);
 
-	          replaceStateProps = _defineProperty({}, replaceState.key, function (a, b) {
-	            b ? dispatch((0, _replaceStateByPath2.default)(setState.value + a, b)) : dispatch((0, _replaceStateByPath2.default)(setState.value, a));
-	          });
+	          replaceStateProps = _defineProperty({}, replaceState.key, replaceReduxState(replaceState, dispatch));
 	        }
 
 	        // replaceState is array
@@ -1857,9 +1863,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          replaceState.map(function (item) {
 	            var replaceStateData = getKeyAndValueFromObject(item);
 
-	            replaceStateProps = _extends({}, replaceStateProps, _defineProperty({}, replaceStateData.key, function (a, b) {
-	              b ? dispatch((0, _replaceStateByPath2.default)(replaceStateData.value + a, b)) : dispatch((0, _replaceStateByPath2.default)(replaceStateData.value, a));
-	            }));
+	            replaceStateProps = _extends({}, replaceStateProps, _defineProperty({}, replaceStateData.key, replaceReduxState(replaceStateData, dispatch)));
 	          });
 	        }
 	      }

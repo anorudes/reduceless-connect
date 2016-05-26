@@ -20,6 +20,18 @@ const getKeyAndValueFromObject = obj => {
   };
 };
 
+const setReduxState = (setState, dispatch) => {
+  return (a, b) => b
+    ? dispatch(setStateByPath(`${setState.value}.${a}`, b))
+    : dispatch(setStateByPath(setState.value, a));
+};
+
+const replaceReduxState = (setState, dispatch) => {
+  return (a, b) => b
+      ? dispatch(replaceStateByPath(`${setState.value}.${a}`, b))
+      : dispatch(replaceStateByPath(setState.value, a));
+};
+
 export default function reducelessConnect(path, dispatchProps = {}, setState, replaceState) {
   return function (WrappedComponent) {
     class Connect extends React.Component {
@@ -60,11 +72,7 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
             setState = getKeyAndValueFromObject(setState);
 
             setStateProps = {
-              [setState.key]: (a, b) => {
-                b
-                  ? dispatch(setStateByPath(setState.value + a, b))
-                  : dispatch(setStateByPath(setState.value, a));
-              },
+              [setState.key]: setReduxState(setState, dispatch),
             };
           }
 
@@ -75,11 +83,7 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
 
               setStateProps = {
                 ...setStateProps,
-                [setStateData.key]: (a, b) => {
-                  b
-                    ? dispatch(setStateByPath(setStateData.value + a, b))
-                    : dispatch(setStateByPath(setStateData.value, a));
-                },
+                [setStateData.key]: setReduxState(setStateData, dispatch),
               };
             });
           }
@@ -91,11 +95,7 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
             replaceState = getKeyAndValueFromObject(replaceState);
 
             replaceStateProps = {
-              [replaceState.key]: (a, b) => {
-                b
-                  ? dispatch(replaceStateByPath(setState.value + a, b))
-                  : dispatch(replaceStateByPath(setState.value, a));
-              },
+              [replaceState.key]: replaceReduxState(replaceState, dispatch),
             };
           }
 
@@ -106,11 +106,7 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
 
               replaceStateProps = {
                 ...replaceStateProps,
-                [replaceStateData.key]: (a, b) => {
-                  b
-                    ? dispatch(replaceStateByPath(replaceStateData.value + a, b))
-                    : dispatch(replaceStateByPath(replaceStateData.value, a));
-                },
+                [replaceStateData.key]: replaceReduxState(replaceStateData, dispatch),
               };
             });
           }
