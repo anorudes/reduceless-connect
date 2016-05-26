@@ -41,7 +41,7 @@ import { connect } from 'reduceless-connect';
 
 @connect(
   'app', // working as 'state => state.app' in @connect react-redux
-  { ...actionCreators.app }, // working as 'bindActionCreators(...actionCreators.app)' in @connect react-redux
+  { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
   { setAppSettings: 'app.settings' }, // new method for change app.settings redux state
 )
 export default class TestComponent extends Component {
@@ -72,7 +72,7 @@ import { connect } from 'reduceless-connect';
 
 @connect(
   ['app', 'user', 'categories'], // working as 'state => ({ ...state.app, ...state.user, ...state.categories })' in @connect react-redux
-  { ...actionCreators.app, ...actionCreators.posts }, // working as 'bindActionCreators({ ...actionCreators.app, ...actionCreators.posts })' in @connect react-redux
+  { ...actionCreators.app, ...actionCreators.posts }, // // working as 'dispatch => bindActionCreators({ ...actionCreators.app, ...actionCreators.posts }, dispatch)' in @connect react-redux in @connect react-redux
   [{ // we can pass array
     setAppSettings: 'app.settings'
   }, {
