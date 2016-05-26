@@ -37,6 +37,8 @@ export default function app(state = {
 ## Example:
 
 ```js
+import { connect } from 'reduceless-connect';
+
 @connect(
   'app', // Working as 'state => state.app' in @connect react-redux
   dispatch => bindActionCreators({ ...actionCreators.app, }, dispatch), // idently react-redux
