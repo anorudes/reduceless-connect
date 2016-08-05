@@ -41,9 +41,9 @@ import { connect } from 'reduceless-connect';
 import * as actionCreators from 'redux/modules'; // https://github.com/erikras/ducks-modular-redux
 
 @connect(
-  'app', // working as 'state => state.app' in @connect react-redux
+  ['app'], // working as 'state => state.app' in @connect react-redux
   { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
-  { setAppSettings: 'app.settings' }, // new method for change app.settings redux state
+  [{ setAppSettings: 'app.settings' }], // new method for change app.settings redux state
 )
 export default class TestComponent extends Component {
   static propTypes = {
@@ -72,7 +72,7 @@ export default class TestComponent extends Component {
 @connect(
   ['app', 'user', 'categories'], // working as 'state => ({ ...state.app, ...state.user, ...state.categories })' in @connect react-redux
   { ...actionCreators.app, ...actionCreators.posts }, // // working as 'dispatch => bindActionCreators({ ...actionCreators.app, ...actionCreators.posts }, dispatch)' in @connect react-redux in @connect react-redux
-  [{ // we can pass array
+  [{
     setAppSettings: 'app.settings'
   }, {
     setCategoriesSettings: 'categories.settings'
@@ -97,7 +97,7 @@ export default class TestComponent extends Component {
 
 ```js
 @connect(
-  'app', // working as 'state => state.app' in @connect react-redux
+  ['app'], // working as 'state => state.app' in @connect react-redux
   { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
   { setAppSettings: props => `app.data.${props.index}` },
 )
