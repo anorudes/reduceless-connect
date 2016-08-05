@@ -1,5 +1,6 @@
 # Reduceless-connect
-based on [reduceless](https://github.com/nosovsh/reduceless)
+Simple abstraction over Redux to make state management easy. <br />
+Based on [reduceless](https://github.com/nosovsh/reduceless)
 
 ## Example:
 
@@ -47,10 +48,14 @@ export default class TestComponent extends Component {
 )
 ```
 
-## setReduxState method by path
+## setReduxState by path
 
 ```js
-<button onClick={() => setAppSettings('example.a' { qwe: true })}> // = app.settings.exampla.a.qwe = true
+<button onClick={() => setAppSettings('example.a' { qwe: true })}> // = app.settings.example.a.qwe = true
+```
+
+```js
+<button onClick={() => setAppSettings('list.2' { qwe: true })}> // = app.settings.list[2].qwe = true
 ```
 
 ## Deep selector example:
@@ -69,6 +74,11 @@ export default class TestComponent extends Component {
   [{ setAppSettings: props => `app.data.${props.index}` }],
 )
 ```
+
+## Full example:
+
+See the repo "redux-easy-boilerplate", branch "[reduceless-connect](https://github.com/anorudes/redux-easy-boilerplate)".<br />
+Component "[app/components/Containers/ReducelessExample](https://github.com/anorudes/redux-easy-boilerplate/tree/reduceless-connect/app/components/Containers/ReducelessExample)"
 
 ## Install
 
