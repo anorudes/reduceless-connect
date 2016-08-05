@@ -79,15 +79,6 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
         }
 
         if (setState) {
-          // setState is object
-          if (typeof setState === 'object' && Object.prototype.toString.call(setState) !== '[object Array]') {
-            setState = getKeyAndValueFromObject(setState);
-
-            setStateProps = {
-              [setState.key]: setReduxState(setState, dispatch, props),
-            };
-          }
-
           // setState is array
           if (typeof setState === 'object' && Object.prototype.toString.call(setState) === '[object Array]') {
             setState.map(item => {
@@ -102,15 +93,6 @@ export default function reducelessConnect(path, dispatchProps = {}, setState, re
         }
 
         if (replaceState) {
-          // replaceState is object
-          if (typeof replaceState === 'object' && Object.prototype.toString.call(replaceState) !== '[object Array]') {
-            replaceState = getKeyAndValueFromObject(replaceState);
-
-            replaceStateProps = {
-              [replaceState.key]: replaceReduxState(replaceState, dispatch),
-            };
-          }
-
           // replaceState is array
           if (typeof replaceState === 'object' && Object.prototype.toString.call(replaceState) === '[object Array]') {
             replaceState.map(item => {

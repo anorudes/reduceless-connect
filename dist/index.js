@@ -1842,13 +1842,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      props = _extends({}, slicedState, props);
 
 	      if (setState) {
-	        // setState is object
-	        if ((typeof setState === 'undefined' ? 'undefined' : _typeof(setState)) === 'object' && Object.prototype.toString.call(setState) !== '[object Array]') {
-	          setState = getKeyAndValueFromObject(setState);
-
-	          setStateProps = _defineProperty({}, setState.key, setReduxState(setState, dispatch, props));
-	        }
-
 	        // setState is array
 	        if ((typeof setState === 'undefined' ? 'undefined' : _typeof(setState)) === 'object' && Object.prototype.toString.call(setState) === '[object Array]') {
 	          setState.map(function (item) {
@@ -1860,13 +1853,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      if (replaceState) {
-	        // replaceState is object
-	        if ((typeof replaceState === 'undefined' ? 'undefined' : _typeof(replaceState)) === 'object' && Object.prototype.toString.call(replaceState) !== '[object Array]') {
-	          replaceState = getKeyAndValueFromObject(replaceState);
-
-	          replaceStateProps = _defineProperty({}, replaceState.key, replaceReduxState(replaceState, dispatch));
-	        }
-
 	        // replaceState is array
 	        if ((typeof replaceState === 'undefined' ? 'undefined' : _typeof(replaceState)) === 'object' && Object.prototype.toString.call(replaceState) === '[object Array]') {
 	          replaceState.map(function (item) {
