@@ -78,7 +78,7 @@ export default class TestComponent extends Component {
 ## Full example:
 
 See the repo "redux-easy-boilerplate", branch "[reduceless-connect](https://github.com/anorudes/redux-easy-boilerplate/tree/reduceless-connect)".<br />
-Component "[app/components/Containers/ReducelessExample](https://github.com/anorudes/redux-easy-boilerplate/tree/reduceless-connect/app/components/Containers/ReducelessExample)"
+Component "[app/components/Containers/ReducelessExample](https://github.com/anorudes/redux-easy-boilerplate/blob/reduceless-connect/app/components/Containers/ReducelessExample/index.js)"
 
 ## Install
 
