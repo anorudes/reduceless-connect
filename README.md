@@ -66,7 +66,7 @@ export default class TestComponent extends Component {
 @connect(
   ['app'], // working as 'state => state.app' in @connect react-redux
   { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
-  { setAppSettings: props => `app.data.${props.index}` },
+  [{ setAppSettings: props => `app.data.${props.index}` }],
 )
 ```
 
