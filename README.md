@@ -1,39 +1,6 @@
 # Reduceless-connect
 based on [reduceless](https://github.com/nosovsh/reduceless)
 
-## Install
-
-Combine reducers:
-
-```js
-import { wrapReducerWithSetGlobalState } from 'reduceless-connect';
-
-const rootReducer = wrapReducerWithSetGlobalState(
-  combineReducers({
-    form: formReducer,
-    app,
-    user,
-    users,
-    posts,
-    categories,
-    questions,
-    rules,
-    quotes,
-  })
-);
-```
-
-Reducer:
-
-```js
-export default function app(state = {
-  data: ['just example', 'just example'],
-  settings: {
-    test: false,
-  },
-}, action) {
-```
-
 ## Example:
 
 ```js
@@ -101,4 +68,37 @@ export default class TestComponent extends Component {
   { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
   { setAppSettings: props => `app.data.${props.index}` },
 )
+```
+
+## Install
+
+Combine reducers:
+
+```js
+import { wrapReducerWithSetGlobalState } from 'reduceless-connect';
+
+const rootReducer = wrapReducerWithSetGlobalState(
+  combineReducers({
+    form: formReducer,
+    app,
+    user,
+    users,
+    posts,
+    categories,
+    questions,
+    rules,
+    quotes,
+  })
+);
+```
+
+Reducer:
+
+```js
+export default function app(state = {
+  data: ['just example', 'just example'],
+  settings: {
+    test: false,
+  },
+}, action) {
 ```
