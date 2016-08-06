@@ -1,15 +1,31 @@
 # Reduceless-connect
+
 Simple abstraction over Redux to make state management easy. <br />
+You can change redux state without creating constants and actions, just see examples.
+
 Based on [reduceless](https://github.com/nosovsh/reduceless)
 
-## Example:
+## Basic example:
+
+For start we will create simple reducer file as you doing with redux:
+
+```js
+const initialState = {
+  settings: {
+    showExamplePopup: false,
+  }
+}
+function app(state, action) { }
+```
+After this we can use new "connect" from "reduceless-connect":<br />
+This example for change "test" variable in reducer "app" without constants and actions. Simple?
 
 ```js
 import { connect } from 'reduceless-connect';
 import * as actionCreators from 'redux/modules'; // https://github.com/erikras/ducks-modular-redux
 
 @connect(
-  ['app'], // working as 'state => state.app' in @connect react-redux
+  ['app'], // working as 'state => state.app' in @connect react-redux.
   { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
   [{ setAppSettings: 'app.settings' }], // new method for change app.settings redux state
 )
@@ -21,20 +37,22 @@ export default class TestComponent extends Component {
   };
   render() {
     const { settings, setAppSettings, data } = this.props;
-    console.log(data);
+
     return (
       <section>
-        <button onClick={() => setAppSettings({ test: true })}>
+        <button onClick={() => setAppSettings({ showExamplePopup: true })}>
           test
         </button>
-        { settings.test && <div>test === true</div> }
+        { settings.showExamplePopup && <div>showExamplePopup === true</div> }
       </section>
     );
   }
 }
-```
 
+```
 ## Multiple selector and setReduxState example:
+
+With this example we can change "settings" in "categories" reducer and "settings" in app reducer without constants and actions.
 
 ```js
 @connect(
@@ -50,15 +68,25 @@ export default class TestComponent extends Component {
 
 ## setReduxState by path
 
-```js
-<button onClick={() => setAppSettings('example.a' { qwe: true })}> // = app.settings.example.a.qwe = true
-```
+Can i change array? Yes, can! See next example for more details:
 
 ```js
 <button onClick={() => setAppSettings('list.2' { qwe: true })}> // = app.settings.list[2].qwe = true
 ```
 
-## Deep selector example:
+For object:
+
+```js
+<button onClick={() => setAppSettings('example.a' { qwe: true })}> // = app.settings.example.a.qwe = true
+```
+
+## Full example in "redux-easy-boilerplate":
+
+See the repo "redux-easy-boilerplate", branch "[reduceless-connect](https://github.com/anorudes/redux-easy-boilerplate/tree/reduceless-connect)".<br />
+Component "[app/components/Containers/ReducelessExample](https://github.com/anorudes/redux-easy-boilerplate/blob/reduceless-connect/app/components/Containers/ReducelessExample/index.js)"
+
+## Also you can:
+## Deep selector example
 
 ```js
 @connect(
@@ -75,12 +103,7 @@ export default class TestComponent extends Component {
 )
 ```
 
-## Full example:
-
-See the repo "redux-easy-boilerplate", branch "[reduceless-connect](https://github.com/anorudes/redux-easy-boilerplate/tree/reduceless-connect)".<br />
-Component "[app/components/Containers/ReducelessExample](https://github.com/anorudes/redux-easy-boilerplate/blob/reduceless-connect/app/components/Containers/ReducelessExample/index.js)"
-
-## Install
+## How it intall?
 
 Combine reducers:
 
