@@ -7,7 +7,8 @@ Based on [reduceless](https://github.com/nosovsh/reduceless)
 
 ## Basic example:
 
-For start we will create simple reducer file as you doing with redux:
+For start we will create simple reducer file as you doing with redux. <br />
+You already know how to do it:
 
 ```js
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
     showExamplePopup: false,
   }
 }
-function app(state, action) { }
+export default function app(state, action) { }
 ```
 After this we can use new "connect" from "reduceless-connect":<br />
 This example for change "test" variable in reducer "app" without constants and actions. Simple?
@@ -105,7 +106,8 @@ Component "[app/components/Containers/ReducelessExample](https://github.com/anor
 
 ## How it intall?
 
-Combine reducers:
+Very simple, you need update your default code with redux.<br />
+Jus add "wrapReducerWithSetGlobalState" in combine reducers:
 
 ```js
 import { wrapReducerWithSetGlobalState } from 'reduceless-connect';
@@ -125,11 +127,10 @@ const rootReducer = wrapReducerWithSetGlobalState(
 );
 ```
 
-Reducer:
+And your simple reducer file:
 
 ```js
 export default function app(state = {
-  data: ['just example', 'just example'],
   settings: {
     test: false,
   },
