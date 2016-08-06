@@ -28,6 +28,8 @@ import * as actionCreators from 'redux/modules'; // https://github.com/erikras/d
 @connect(
   ['app'], // working as 'state => state.app' in @connect react-redux.
   { ...actionCreators.app }, // working as 'dispatch => bindActionCreators({ ...actionCreators.app }, dispatch)' in @connect react-redux
+  // why did me add "actionsCreators"? Just for example, we can replace default "connect" in "redux" with "connect" from reduceless-connect.
+
   [{ setAppSettings: 'app.settings' }], // new method for change app.settings redux state
 )
 export default class TestComponent extends Component {
@@ -49,8 +51,9 @@ export default class TestComponent extends Component {
     );
   }
 }
-
 ```
+Don't forget:  We have actionCreators in props too. So we can use redux actions for data fetch and new method "setAppSettings" for change ui
+
 ## Multiple selector and setReduxState example:
 
 With this example we can change "settings" in "categories" reducer and "settings" in app reducer without constants and actions.
