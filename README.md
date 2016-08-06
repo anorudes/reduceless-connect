@@ -1,7 +1,7 @@
 # Reduceless-connect
 
 Simple abstraction over Redux to make state management easy. <br />
-You can change redux state without creating constants and actions, just see examples.
+You can change redux state for ui without creating constants and actions, just see examples.
 
 Based on [reduceless](https://github.com/nosovsh/reduceless)
 
