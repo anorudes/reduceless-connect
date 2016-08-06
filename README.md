@@ -52,7 +52,7 @@ export default class TestComponent extends Component {
   }
 }
 ```
-Don't forget:  We have actionCreators in props too. So we can use redux actions for data fetch and new method "setAppSettings" for change ui
+Don't forget: We have actionCreators too. So we can use redux actions for data fetch and new method "setAppSettings" for change ui
 
 ## Multiple selector and setReduxState example:
 
