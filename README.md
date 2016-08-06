@@ -106,7 +106,13 @@ Component "[app/components/Containers/ReducelessExample](https://github.com/anor
 
 ## How it intall?
 
-Very simple, you need update your default code with redux.<br />
+Very simple. Just install npm package
+
+```
+$ npm install reduceless-connect --save-dev
+```
+
+After: you need update your default code with redux.<br />
 Jus add "wrapReducerWithSetGlobalState" in combine reducers:
 
 ```js
