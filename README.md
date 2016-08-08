@@ -75,13 +75,13 @@ With this example we can change "settings" in "categories" reducer and "settings
 Can i change array? Yes, can! See next example for more details:
 
 ```js
-<button onClick={() => setAppSettings('list.2' { qwe: true })}> // = app.settings.list[2].qwe = true
+<button onClick={() => setAppSettings('list.2', { qwe: true })}> // = app.settings.list[2].qwe = true
 ```
 
 For object:
 
 ```js
-<button onClick={() => setAppSettings('example.a' { qwe: true })}> // = app.settings.example.a.qwe = true
+<button onClick={() => setAppSettings('example.a', { qwe: true })}> // = app.settings.example.a.qwe = true
 ```
 
 ## Full example in "redux-easy-boilerplate":
